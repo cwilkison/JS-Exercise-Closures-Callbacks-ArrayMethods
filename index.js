@@ -136,9 +136,7 @@ function processProduct(num1, num2, callback) {
  * should return "sad".
 */
 function processContains(item, list, callback) {
-  return callback(list.filter(function(item){
-    return true
-  }))
+  return callback(list.includes(item));
 }
 
 /**
@@ -160,9 +158,9 @@ function processContains(item, list, callback) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
-}
+function processDuplicateFree(list, callback) {
+  return Array.from(new Set(list));
+  }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -293,12 +291,17 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit() {
+function counterMakerWithLimit(maxNum) {
   let count = 0;
   return function(){
-    ++count;
-    return count-1;
-  }
+    if (count <= maxNum){
+      return count++
+    }
+    else{
+      count = 1;
+      return 0;
+    }
+    }
 }
 
 /////////////// END OF CHALLENGE ///////////////
